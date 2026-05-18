@@ -1,0 +1,151 @@
+event_id,timestamp,source,target,field,anomaly_type,expected_risk_level,reason
+7,2026-05-18T10:56:26Z,internal_db.user_profile,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+9,2026-05-18T10:46:38Z,internal_db.health_record,external_partner,email,external_unapproved,high,未声明字段或目标发生外部传输。
+15,2026-05-18T10:39:45Z,internal_db.order_info,recommendation_service,address,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+41,2026-05-18T10:45:28Z,internal_db.health_record,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+48,2026-05-18T10:49:05Z,internal_db.risk_control,unknown_external,password,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+50,2026-05-18T10:50:22Z,internal_db.customer_service,fraud_detection_service,order_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+62,2026-05-18T10:50:57Z,internal_db.marketing_profile,recommendation_service,gender,purpose_mismatch,medium,实际用途与声明用途不一致。
+63,2026-05-18T10:46:59Z,internal_db.payment_info,shadow_api,private_key,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+68,2026-05-18T10:40:13Z,internal_db.payment_info,external_partner,id_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+74,2026-05-18T10:43:43Z,internal_db.order_info,external_partner,face_id,sensitive_exfiltration,high,高敏字段发生外部传输。
+90,2026-05-18T10:53:52Z,internal_db.marketing_profile,external_partner,salary,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+92,2026-05-18T10:55:23Z,internal_db.order_info,shadow_api,password,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+96,2026-05-18T10:55:30Z,internal_db.order_info,fraud_detection_service,address,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+106,2026-05-18T10:42:26Z,internal_db.order_info,third_party_analytics,address,external_unapproved,high,未声明字段或目标发生外部传输。
+110,2026-05-18T10:50:43Z,internal_db.health_record,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+122,2026-05-18T10:44:39Z,internal_db.health_record,risk_engine,name,purpose_mismatch,medium,实际用途与声明用途不一致。
+125,2026-05-18T10:52:35Z,internal_db.location_trace,shadow_api,phone,unknown_target,high,数据流向未知外部目标。
+128,2026-05-18T10:51:11Z,internal_db.health_record,shadow_api,private_key,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+138,2026-05-18T10:40:06Z,internal_db.audit_log,third_party_analytics,location,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+140,2026-05-18T10:50:01Z,internal_db.payment_info,external_partner,id_card,sensitive_exfiltration,high,高敏字段发生外部传输。
+145,2026-05-18T10:46:31Z,internal_db.payment_info,external_partner,salary,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+147,2026-05-18T10:45:42Z,internal_db.order_info,fraud_detection_service,order_id,purpose_mismatch,medium,实际用途与声明用途不一致。
+148,2026-05-18T10:41:16Z,internal_db.payment_info,external_partner,id_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+160,2026-05-18T10:52:14Z,internal_db.health_record,unknown_external,password,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+163,2026-05-18T10:53:24Z,internal_db.location_trace,risk_engine,location,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+173,2026-05-18T10:39:52Z,internal_db.order_info,fraud_detection_service,address,volume_spike,medium,单次传输 volume 明显高于正常水平。
+182,2026-05-18T10:43:29Z,internal_db.audit_log,unknown_external,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+183,2026-05-18T10:43:08Z,internal_db.audit_log,shadow_api,auth_token,unknown_target,high,数据流向未知外部目标。
+198,2026-05-18T10:44:46Z,internal_db.customer_service,external_partner,credit_score,sensitive_exfiltration,high,高敏字段发生外部传输。
+200,2026-05-18T10:53:10Z,internal_db.marketing_profile,external_partner,face_id,sensitive_exfiltration,high,高敏字段发生外部传输。
+205,2026-05-18T10:42:19Z,internal_db.customer_service,external_partner,credit_score,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+208,2026-05-18T10:39:38Z,internal_db.payment_info,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+211,2026-05-18T10:43:22Z,internal_db.order_info,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+215,2026-05-18T10:55:44Z,internal_db.payment_info,unknown_external,amount,unknown_target,high,数据流向未知外部目标。
+216,2026-05-18T10:41:02Z,internal_db.user_profile,unknown_external,age,unknown_target,high,数据流向未知外部目标。
+226,2026-05-18T10:54:34Z,internal_db.risk_control,fraud_detection_service,amount,volume_spike,medium,单次传输 volume 明显高于正常水平。
+230,2026-05-18T10:47:48Z,internal_db.user_profile,feature_platform,email,purpose_mismatch,medium,实际用途与声明用途不一致。
+234,2026-05-18T10:53:03Z,internal_db.risk_control,analytics_service,device_id,purpose_mismatch,medium,实际用途与声明用途不一致。
+242,2026-05-18T10:42:12Z,internal_db.payment_info,external_partner,email,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+255,2026-05-18T10:43:15Z,internal_db.location_trace,external_partner,email,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+260,2026-05-18T10:48:37Z,internal_db.payment_info,external_partner,salary,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+261,2026-05-18T10:41:30Z,internal_db.order_info,external_payment_gateway,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+262,2026-05-18T10:56:05Z,internal_db.audit_log,external_partner,address,external_unapproved,high,未声明字段或目标发生外部传输。
+271,2026-05-18T10:42:05Z,internal_db.payment_info,shadow_api,amount,unknown_target,high,数据流向未知外部目标。
+280,2026-05-18T10:47:34Z,internal_db.order_info,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+283,2026-05-18T10:39:31Z,internal_db.device_log,third_party_analytics,face_id,sensitive_exfiltration,high,高敏字段发生外部传输。
+298,2026-05-18T10:45:49Z,internal_db.health_record,external_partner,credit_score,sensitive_exfiltration,high,高敏字段发生外部传输。
+300,2026-05-18T10:52:28Z,internal_db.customer_service,risk_engine,order_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+302,2026-05-18T10:48:51Z,internal_db.audit_log,fraud_detection_service,device_id,purpose_mismatch,medium,实际用途与声明用途不一致。
+330,2026-05-18T10:54:41Z,internal_db.risk_control,unknown_external,device_id,unknown_target,high,数据流向未知外部目标。
+337,2026-05-18T10:51:25Z,internal_db.audit_log,data_warehouse,device_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+346,2026-05-18T10:45:21Z,internal_db.customer_service,third_party_analytics,device_id,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+349,2026-05-18T10:42:54Z,internal_db.health_record,feature_platform,name,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+361,2026-05-18T10:52:00Z,internal_db.risk_control,external_payment_gateway,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+372,2026-05-18T10:46:03Z,internal_db.audit_log,recommendation_service,device_id,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+392,2026-05-18T10:44:11Z,internal_db.marketing_profile,unknown_external,email,unknown_target,high,数据流向未知外部目标。
+395,2026-05-18T10:40:20Z,internal_db.audit_log,external_payment_gateway,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+401,2026-05-18T10:52:42Z,internal_db.payment_info,third_party_analytics,device_id,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+403,2026-05-18T10:49:40Z,internal_db.marketing_profile,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+407,2026-05-18T10:49:12Z,internal_db.health_record,fraud_detection_service,name,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+428,2026-05-18T10:41:37Z,internal_db.location_trace,external_partner,face_id,sensitive_exfiltration,high,高敏字段发生外部传输。
+430,2026-05-18T10:56:33Z,internal_db.customer_service,fraud_detection_service,order_id,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+446,2026-05-18T10:47:55Z,internal_db.payment_info,external_partner,salary,sensitive_exfiltration,high,高敏字段发生外部传输。
+448,2026-05-18T10:44:32Z,internal_db.customer_service,third_party_analytics,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+467,2026-05-18T10:51:46Z,internal_db.health_record,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+468,2026-05-18T10:39:17Z,internal_db.risk_control,third_party_analytics,address,external_unapproved,high,未声明字段或目标发生外部传输。
+481,2026-05-18T10:50:50Z,internal_db.user_profile,external_crm,phone,external_unapproved,high,未声明字段或目标发生外部传输。
+483,2026-05-18T10:50:36Z,internal_db.health_record,external_partner,device_id,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+484,2026-05-18T10:49:26Z,internal_db.marketing_profile,unknown_external,gender,unknown_target,high,数据流向未知外部目标。
+488,2026-05-18T10:47:41Z,internal_db.risk_control,external_payment_gateway,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+490,2026-05-18T10:55:16Z,internal_db.device_log,external_partner,salary,sensitive_exfiltration,high,高敏字段发生外部传输。
+492,2026-05-18T10:54:13Z,internal_db.order_info,third_party_analytics,medical_record,sensitive_exfiltration,high,高敏字段发生外部传输。
+497,2026-05-18T10:42:40Z,internal_db.health_record,third_party_analytics,salary,sensitive_exfiltration,high,高敏字段发生外部传输。
+501,2026-05-18T10:48:23Z,internal_db.location_trace,unknown_external,location,unknown_target,high,数据流向未知外部目标。
+504,2026-05-18T10:45:35Z,internal_db.location_trace,external_payment_gateway,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+511,2026-05-18T10:56:12Z,internal_db.device_log,feature_platform,location,purpose_mismatch,medium,实际用途与声明用途不一致。
+518,2026-05-18T10:47:27Z,internal_db.health_record,external_partner,phone,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+525,2026-05-18T10:54:06Z,internal_db.order_info,fraud_detection_service,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+531,2026-05-18T10:40:55Z,internal_db.order_info,external_crm,order_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+536,2026-05-18T10:46:52Z,internal_db.location_trace,third_party_analytics,id_card,sensitive_exfiltration,high,高敏字段发生外部传输。
+537,2026-05-18T10:39:24Z,internal_db.order_info,fraud_detection_service,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+544,2026-05-18T10:41:51Z,internal_db.risk_control,external_payment_gateway,amount,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+553,2026-05-18T10:52:07Z,internal_db.health_record,third_party_analytics,face_id,sensitive_exfiltration,high,高敏字段发生外部传输。
+560,2026-05-18T10:52:56Z,internal_db.location_trace,shadow_api,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+563,2026-05-18T10:49:47Z,internal_db.payment_info,third_party_analytics,address,external_unapproved,high,未声明字段或目标发生外部传输。
+584,2026-05-18T10:46:17Z,internal_db.order_info,shadow_api,address,unknown_target,high,数据流向未知外部目标。
+587,2026-05-18T10:47:20Z,internal_db.risk_control,unknown_external,device_id,unknown_target,high,数据流向未知外部目标。
+589,2026-05-18T10:45:56Z,internal_db.user_profile,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+593,2026-05-18T10:41:09Z,internal_db.user_profile,third_party_analytics,phone,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+594,2026-05-18T10:55:09Z,internal_db.payment_info,feature_platform,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+599,2026-05-18T10:49:19Z,internal_db.user_profile,risk_engine,email,volume_spike,medium,单次传输 volume 明显高于正常水平。
+606,2026-05-18T10:55:02Z,internal_db.marketing_profile,external_payment_gateway,address,external_unapproved,high,未声明字段或目标发生外部传输。
+614,2026-05-18T10:44:18Z,internal_db.payment_info,third_party_analytics,location,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+616,2026-05-18T10:43:57Z,internal_db.user_profile,risk_engine,email,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+623,2026-05-18T10:39:59Z,internal_db.risk_control,shadow_api,device_id,unknown_target,high,数据流向未知外部目标。
+624,2026-05-18T10:51:04Z,internal_db.device_log,third_party_analytics,salary,sensitive_exfiltration,high,高敏字段发生外部传输。
+625,2026-05-18T10:50:08Z,internal_db.user_profile,shadow_api,password,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+626,2026-05-18T10:42:47Z,internal_db.customer_service,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+635,2026-05-18T10:54:20Z,internal_db.audit_log,shadow_api,private_key,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+640,2026-05-18T10:52:21Z,internal_db.customer_service,risk_engine,order_id,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+652,2026-05-18T10:40:41Z,internal_db.device_log,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+653,2026-05-18T10:53:38Z,internal_db.payment_info,unknown_external,amount,unknown_target,high,数据流向未知外部目标。
+655,2026-05-18T10:40:27Z,internal_db.risk_control,feature_platform,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+659,2026-05-18T10:44:53Z,internal_db.user_profile,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+686,2026-05-18T10:56:40Z,internal_db.audit_log,feature_platform,device_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+687,2026-05-18T10:45:07Z,internal_db.order_info,fraud_detection_service,address,volume_spike,medium,单次传输 volume 明显高于正常水平。
+688,2026-05-18T10:53:59Z,internal_db.location_trace,external_partner,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+696,2026-05-18T10:47:06Z,internal_db.device_log,risk_engine,location,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+699,2026-05-18T10:47:13Z,internal_db.risk_control,fraud_detection_service,amount,volume_spike,medium,单次传输 volume 明显高于正常水平。
+705,2026-05-18T10:41:23Z,internal_db.location_trace,external_crm,device_id,external_unapproved,high,未声明字段或目标发生外部传输。
+709,2026-05-18T10:55:51Z,internal_db.location_trace,third_party_analytics,location,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+710,2026-05-18T10:51:53Z,internal_db.audit_log,unknown_external,email,external_unapproved,high,未声明字段或目标发生外部传输。
+712,2026-05-18T10:43:36Z,internal_db.user_profile,data_warehouse,email,purpose_mismatch,medium,实际用途与声明用途不一致。
+718,2026-05-18T10:51:18Z,internal_db.order_info,fraud_detection_service,amount,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+731,2026-05-18T10:46:24Z,internal_db.payment_info,third_party_analytics,phone,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+735,2026-05-18T10:48:02Z,internal_db.payment_info,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+743,2026-05-18T10:52:49Z,internal_db.audit_log,external_partner,salary,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+747,2026-05-18T10:43:01Z,internal_db.device_log,risk_engine,location,volume_spike,medium,单次传输 volume 明显高于正常水平。
+749,2026-05-18T10:54:55Z,internal_db.location_trace,external_partner,credit_score,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+761,2026-05-18T10:51:39Z,internal_db.risk_control,third_party_analytics,email,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+766,2026-05-18T10:51:32Z,internal_db.risk_control,shadow_api,face_id,unknown_target,high,数据流向未知外部目标。
+771,2026-05-18T10:41:44Z,internal_db.risk_control,shadow_api,password,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+776,2026-05-18T10:55:58Z,internal_db.audit_log,external_partner,bank_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+781,2026-05-18T10:53:17Z,internal_db.payment_info,shadow_api,auth_token,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+790,2026-05-18T10:46:45Z,internal_db.audit_log,fraud_detection_service,device_id,purpose_mismatch,medium,实际用途与声明用途不一致。
+795,2026-05-18T10:48:16Z,internal_db.payment_info,reporting_service,amount,volume_spike,medium,单次传输 volume 明显高于正常水平。
+799,2026-05-18T10:50:15Z,internal_db.marketing_profile,fraud_detection_service,name,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+803,2026-05-18T10:46:10Z,internal_db.marketing_profile,third_party_analytics,gender,volume_spike,medium,单次传输 volume 明显高于正常水平。
+815,2026-05-18T10:54:48Z,internal_db.customer_service,external_partner,location,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+819,2026-05-18T10:49:54Z,internal_db.marketing_profile,external_ad_platform,gender,purpose_mismatch,medium,实际用途与声明用途不一致。
+821,2026-05-18T10:50:29Z,internal_db.audit_log,unknown_external,auth_token,unknown_target,high,数据流向未知外部目标。
+823,2026-05-18T10:48:09Z,internal_db.customer_service,fraud_detection_service,email,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+831,2026-05-18T10:55:37Z,internal_db.health_record,analytics_service,name,volume_spike,medium,单次传输 volume 明显高于正常水平。
+839,2026-05-18T10:45:14Z,internal_db.risk_control,shadow_api,face_id,unknown_target,high,数据流向未知外部目标。
+841,2026-05-18T10:44:04Z,internal_db.device_log,data_warehouse,device_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+842,2026-05-18T10:48:30Z,internal_db.order_info,external_partner,email,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+850,2026-05-18T10:42:33Z,internal_db.payment_info,feature_platform,amount,purpose_mismatch,medium,实际用途与声明用途不一致。
+860,2026-05-18T10:49:33Z,internal_db.device_log,third_party_analytics,device_id,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+870,2026-05-18T10:44:25Z,internal_db.location_trace,external_partner,id_card,partner_overreach,high,合作方接收超出声明范围的敏感字段。
+876,2026-05-18T10:43:50Z,internal_db.marketing_profile,shadow_api,private_key,critical_field_leakage,high,critical 字段流向未知或影子外部接口。
+884,2026-05-18T10:48:58Z,internal_db.risk_control,third_party_analytics,medical_record,sensitive_exfiltration,high,高敏字段发生外部传输。
+892,2026-05-18T10:45:00Z,internal_db.order_info,fraud_detection_service,order_id,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+907,2026-05-18T10:56:19Z,internal_db.user_profile,external_partner,face_id,sensitive_exfiltration,high,高敏字段发生外部传输。
+911,2026-05-18T10:40:34Z,internal_db.audit_log,third_party_analytics,credit_score,sensitive_exfiltration,high,高敏字段发生外部传输。
+923,2026-05-18T10:40:48Z,internal_db.payment_info,external_payment_gateway,order_id,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+948,2026-05-18T10:53:45Z,internal_db.marketing_profile,external_partner,phone,low_and_slow_exfiltration,medium,中敏字段以低速方式持续外传。
+958,2026-05-18T10:53:31Z,internal_db.location_trace,risk_engine,device_id,volume_spike,medium,单次传输 volume 明显高于正常水平。
+962,2026-05-18T10:54:27Z,internal_db.health_record,fraud_detection_service,name,frequency_anomaly,medium,短时间内同类字段传输频率异常。
+972,2026-05-18T10:41:58Z,internal_db.marketing_profile,risk_engine,name,volume_spike,medium,单次传输 volume 明显高于正常水平。
+986,2026-05-18T10:48:44Z,internal_db.order_info,unknown_external,device_id,external_unapproved,high,未声明字段或目标发生外部传输。

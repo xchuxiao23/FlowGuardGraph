@@ -1,0 +1,12 @@
+event_id,timestamp,source,target,field,anomaly_type,expected_risk_level,reason
+25,2026-05-18T10:05:00Z,internal_db.user_profile,external_partner,id_card,sensitive_exfiltration,high,高敏字段 id_card 传输到未声明外部合作方。
+26,2026-05-18T10:05:05Z,internal_db.user_profile,external_crm,phone,external_unapproved,high,phone 字段未在声明规则中允许传输到 external_crm。
+27,2026-05-18T10:05:10Z,internal_db.payment_info,external_partner,bank_card,sensitive_exfiltration,high,支付敏感字段 bank_card 传输到外部合作方。
+28,2026-05-18T10:05:15Z,internal_db.user_profile,unknown_external,password,critical_field_leakage,high,critical 字段 password 传输到未知外部系统。
+29,2026-05-18T10:05:20Z,internal_db.user_profile,analytics_service,name,purpose_mismatch,medium,声明用途为 statistics 但实际用途为 marketing。
+30,2026-05-18T10:06:00Z,internal_db.user_profile,external_crm,email,frequency_anomaly,medium,email 字段在短时间内出现高频同步。
+31,2026-05-18T10:06:08Z,internal_db.user_profile,external_crm,email,frequency_anomaly,medium,email 字段在短时间内出现高频同步。
+32,2026-05-18T10:06:16Z,internal_db.user_profile,external_crm,email,frequency_anomaly,medium,email 字段在短时间内出现高频同步。
+33,2026-05-18T10:06:24Z,internal_db.user_profile,external_crm,email,frequency_anomaly,medium,email 字段在短时间内出现高频同步。
+34,2026-05-18T10:06:32Z,internal_db.user_profile,external_crm,email,frequency_anomaly,medium,email 字段在短时间内出现高频同步。
+35,2026-05-18T10:06:40Z,internal_db.user_profile,external_crm,email,frequency_anomaly,medium,email 字段在短时间内超过声明频率阈值。

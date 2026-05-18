@@ -1,0 +1,12 @@
+{
+  "name": "low",
+  "age": "low",
+  "order_id": "low",
+  "amount": "medium",
+  "email": "medium",
+  "phone": "medium",
+  "address": "medium",
+  "id_card": "high",
+  "bank_card": "high",
+  "password": "critical"
+}

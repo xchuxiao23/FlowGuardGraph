@@ -1,0 +1,22 @@
+{
+  "name": "low",
+  "age": "low",
+  "gender": "low",
+  "order_id": "low",
+  "product_id": "low",
+  "email": "medium",
+  "phone": "medium",
+  "address": "medium",
+  "device_id": "medium",
+  "amount": "medium",
+  "location": "medium",
+  "id_card": "high",
+  "bank_card": "high",
+  "credit_score": "high",
+  "medical_record": "high",
+  "face_id": "high",
+  "salary": "high",
+  "password": "critical",
+  "private_key": "critical",
+  "auth_token": "critical"
+}

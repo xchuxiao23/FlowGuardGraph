@@ -1,0 +1,412 @@
+systems:
+- internal_db.user_profile
+- internal_db.order_info
+- internal_db.payment_info
+- internal_db.health_record
+- internal_db.device_log
+- internal_db.location_trace
+- internal_db.marketing_profile
+- internal_db.risk_control
+- internal_db.audit_log
+- internal_db.customer_service
+- analytics_service
+- risk_engine
+- recommendation_service
+- reporting_service
+- fraud_detection_service
+- customer_service_platform
+- data_warehouse
+- feature_platform
+- external_crm
+- external_ad_platform
+- external_partner
+- external_payment_gateway
+- third_party_analytics
+- unknown_external
+- shadow_api
+allowed_flows:
+- source: internal_db.user_profile
+  target: risk_engine
+  fields:
+  - email
+  purpose: risk_control
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.user_profile
+  target: feature_platform
+  fields:
+  - email
+  purpose: feature_engineering
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.user_profile
+  target: data_warehouse
+  fields:
+  - email
+  purpose: business_analysis
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.user_profile
+  target: analytics_service
+  fields:
+  - email
+  - age
+  purpose: statistics
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.order_info
+  target: risk_engine
+  fields:
+  - order_id
+  purpose: risk_control
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.order_info
+  target: reporting_service
+  fields:
+  - order_id
+  - address
+  - amount
+  - product_id
+  purpose: reporting
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.order_info
+  target: fraud_detection_service
+  fields:
+  - order_id
+  - address
+  - amount
+  purpose: fraud_detection
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.order_info
+  target: recommendation_service
+  fields:
+  - order_id
+  - address
+  purpose: recommendation
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.payment_info
+  target: analytics_service
+  fields:
+  - amount
+  - order_id
+  purpose: statistics
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.payment_info
+  target: reporting_service
+  fields:
+  - amount
+  purpose: reporting
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.payment_info
+  target: feature_platform
+  fields:
+  - amount
+  purpose: feature_engineering
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.payment_info
+  target: recommendation_service
+  fields:
+  - amount
+  purpose: recommendation
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.health_record
+  target: fraud_detection_service
+  fields:
+  - name
+  purpose: fraud_detection
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.health_record
+  target: risk_engine
+  fields:
+  - name
+  purpose: risk_control
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.health_record
+  target: analytics_service
+  fields:
+  - name
+  purpose: statistics
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.health_record
+  target: feature_platform
+  fields:
+  - name
+  - age
+  purpose: feature_engineering
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.device_log
+  target: risk_engine
+  fields:
+  - device_id
+  - location
+  purpose: risk_control
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.device_log
+  target: recommendation_service
+  fields:
+  - device_id
+  purpose: recommendation
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.device_log
+  target: data_warehouse
+  fields:
+  - device_id
+  purpose: business_analysis
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.device_log
+  target: feature_platform
+  fields:
+  - device_id
+  - location
+  purpose: feature_engineering
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.location_trace
+  target: data_warehouse
+  fields:
+  - location
+  purpose: business_analysis
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.location_trace
+  target: recommendation_service
+  fields:
+  - location
+  - device_id
+  purpose: recommendation
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.location_trace
+  target: analytics_service
+  fields:
+  - location
+  purpose: statistics
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.location_trace
+  target: risk_engine
+  fields:
+  - location
+  - device_id
+  - phone
+  purpose: risk_control
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.marketing_profile
+  target: risk_engine
+  fields:
+  - name
+  - gender
+  - phone
+  purpose: risk_control
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.marketing_profile
+  target: recommendation_service
+  fields:
+  - name
+  - gender
+  - phone
+  - email
+  purpose: recommendation
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.marketing_profile
+  target: feature_platform
+  fields:
+  - name
+  - gender
+  purpose: feature_engineering
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.marketing_profile
+  target: fraud_detection_service
+  fields:
+  - name
+  - gender
+  - phone
+  - email
+  purpose: fraud_detection
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.risk_control
+  target: feature_platform
+  fields:
+  - amount
+  - device_id
+  purpose: feature_engineering
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.risk_control
+  target: analytics_service
+  fields:
+  - amount
+  - device_id
+  purpose: statistics
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.risk_control
+  target: risk_engine
+  fields:
+  - amount
+  - device_id
+  purpose: risk_control
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.risk_control
+  target: fraud_detection_service
+  fields:
+  - amount
+  purpose: fraud_detection
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.audit_log
+  target: data_warehouse
+  fields:
+  - device_id
+  purpose: business_analysis
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.audit_log
+  target: fraud_detection_service
+  fields:
+  - device_id
+  purpose: fraud_detection
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.audit_log
+  target: recommendation_service
+  fields:
+  - device_id
+  purpose: recommendation
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.audit_log
+  target: feature_platform
+  fields:
+  - device_id
+  purpose: feature_engineering
+  max_frequency_per_minute: 20
+  allow_external: false
+- source: internal_db.customer_service
+  target: feature_platform
+  fields:
+  - order_id
+  - email
+  purpose: feature_engineering
+  max_frequency_per_minute: 30
+  allow_external: false
+- source: internal_db.customer_service
+  target: data_warehouse
+  fields:
+  - order_id
+  - email
+  purpose: business_analysis
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.customer_service
+  target: fraud_detection_service
+  fields:
+  - order_id
+  - email
+  - phone
+  purpose: fraud_detection
+  max_frequency_per_minute: 50
+  allow_external: false
+- source: internal_db.customer_service
+  target: risk_engine
+  fields:
+  - order_id
+  purpose: risk_control
+  max_frequency_per_minute: 10
+  allow_external: false
+- source: internal_db.location_trace
+  target: external_crm
+  fields:
+  - phone
+  purpose: customer_service
+  max_frequency_per_minute: 8
+  allow_external: true
+- source: internal_db.user_profile
+  target: external_crm
+  fields:
+  - email
+  - phone
+  purpose: customer_service
+  max_frequency_per_minute: 3
+  allow_external: true
+- source: internal_db.order_info
+  target: external_crm
+  fields:
+  - order_id
+  purpose: customer_service
+  max_frequency_per_minute: 3
+  allow_external: true
+- source: internal_db.risk_control
+  target: external_payment_gateway
+  fields:
+  - amount
+  purpose: business_integration
+  max_frequency_per_minute: 5
+  allow_external: true
+- source: internal_db.order_info
+  target: external_payment_gateway
+  fields:
+  - order_id
+  - amount
+  purpose: business_integration
+  max_frequency_per_minute: 8
+  allow_external: true
+- source: internal_db.payment_info
+  target: external_payment_gateway
+  fields:
+  - order_id
+  - amount
+  purpose: business_integration
+  max_frequency_per_minute: 3
+  allow_external: true
+- source: internal_db.marketing_profile
+  target: third_party_analytics
+  fields:
+  - age
+  - gender
+  purpose: business_integration
+  max_frequency_per_minute: 8
+  allow_external: true
+- source: internal_db.order_info
+  target: third_party_analytics
+  fields:
+  - product_id
+  purpose: business_integration
+  max_frequency_per_minute: 8
+  allow_external: true
+- source: internal_db.health_record
+  target: external_ad_platform
+  fields:
+  - age
+  purpose: business_integration
+  max_frequency_per_minute: 5
+  allow_external: true
+- source: internal_db.marketing_profile
+  target: external_ad_platform
+  fields:
+  - age
+  - gender
+  purpose: business_integration
+  max_frequency_per_minute: 5
+  allow_external: true

@@ -11,6 +11,7 @@ from flowguardgraph.visualizer import (
     format_list_value,
     get_edge_style,
     get_node_style,
+    truncate_list_for_tooltip,
     visualize_graph,
 )
 
@@ -54,9 +55,25 @@ def test_node_and_edge_tooltip() -> None:
     assert isinstance(node_tooltip, str)
     assert "external_crm" in node_tooltip
     assert isinstance(edge_tooltip, str)
+    assert "<b>" not in edge_tooltip
+    assert "<br>" not in edge_tooltip
     assert "internal_db.user_profile" in edge_tooltip
     assert "external_crm" in edge_tooltip
+    assert "source: internal_db.user_profile" in edge_tooltip
+    assert "target: external_crm" in edge_tooltip
+    assert "risk_level: medium" in edge_tooltip
     assert "medium" in edge_tooltip
+
+
+def test_truncate_list_for_tooltip() -> None:
+    long_values = ["field_1", "field_2", "field_3", "field_4", "field_5", "field_6"]
+
+    assert truncate_list_for_tooltip(None) == ""
+    assert truncate_list_for_tooltip("short text") == "short text"
+    assert truncate_list_for_tooltip(long_values, max_items=3) == (
+        "field_1, field_2, field_3, ..."
+    )
+    assert truncate_list_for_tooltip("x" * 30, max_chars=10) == "xxxxxxx..."
 
 
 def test_get_node_style() -> None:

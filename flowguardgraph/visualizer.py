@@ -30,13 +30,34 @@ def format_list_value(value: Any) -> str:
     return str(value)
 
 
+def truncate_list_for_tooltip(
+    value: Any,
+    max_items: int = 5,
+    max_chars: int = 200,
+) -> str:
+    if value is None:
+        return ""
+
+    if isinstance(value, list):
+        visible_items = [str(item) for item in value[:max_items]]
+        if len(value) > max_items:
+            visible_items.append("...")
+        text = ", ".join(visible_items)
+    else:
+        text = str(value)
+
+    if len(text) > max_chars:
+        return text[: max(0, max_chars - 3)] + "..."
+    return text
+
+
 def build_node_tooltip(node_id: str, attrs: dict[str, Any]) -> str:
     label = attrs.get("label", node_id)
     node_type = attrs.get("node_type", "")
     return (
-        f"<b>Node</b>: {escape(str(node_id))}<br>"
-        f"<b>node_type</b>: {escape(str(node_type))}<br>"
-        f"<b>label</b>: {escape(str(label))}"
+        f"node: {truncate_list_for_tooltip(node_id)}\n"
+        f"type: {truncate_list_for_tooltip(node_type)}\n"
+        f"label: {truncate_list_for_tooltip(label)}"
     )
 
 
@@ -47,6 +68,7 @@ def build_edge_tooltip(source: str, target: str, attrs: dict[str, Any]) -> str:
         ("fields", attrs.get("fields")),
         ("purposes", attrs.get("purposes")),
         ("violation_types", attrs.get("violation_types")),
+        ("delta_type", attrs.get("delta_type")),
         ("risk_level", attrs.get("risk_level")),
         ("max_risk_score", attrs.get("max_risk_score")),
         ("avg_risk_score", attrs.get("avg_risk_score")),
@@ -57,8 +79,8 @@ def build_edge_tooltip(source: str, target: str, attrs: dict[str, Any]) -> str:
         ("risk_reasons", attrs.get("risk_reasons")),
     ]
 
-    return "<br>".join(
-        f"<b>{escape(key)}</b>: {escape(format_list_value(value))}"
+    return "\n".join(
+        f"{key}: {truncate_list_for_tooltip(value)}"
         for key, value in tooltip_fields
     )
 
@@ -75,10 +97,21 @@ def get_node_style(attrs: dict[str, Any]) -> dict[str, Any]:
 
 
 def get_edge_style(attrs: dict[str, Any]) -> dict[str, Any]:
+    delta_type = attrs.get("delta_type")
     risk_level = attrs.get("risk_level", "low")
     is_allowed = attrs.get("is_allowed", True)
 
-    if risk_level == "high":
+    if delta_type == "high_risk_exfiltration":
+        style = {"color": "#D62728", "width": 4, "dashes": True}
+    elif delta_type == "external_unapproved":
+        style = {"color": "#D62728", "width": 3, "dashes": True}
+    elif delta_type == "purpose_mismatch":
+        style = {"color": "#FF8C00", "width": 3, "dashes": True}
+    elif delta_type == "sensitive_exfiltration":
+        style = {"color": "#FF8C00", "width": 3, "dashes": True}
+    elif delta_type == "mixed":
+        style = {"color": "#D62728", "width": 4, "dashes": True}
+    elif risk_level == "high":
         style = {"color": "#D62728", "width": 4, "dashes": True}
     elif risk_level == "medium":
         style = {"color": "#FF8C00", "width": 3, "dashes": True}
@@ -101,6 +134,7 @@ def visualize_graph(
     notebook: bool = False,
     graph_title: str = "Data Flow Graph",
     graph_description: str = "",
+    include_header: bool = True,
 ) -> str:
     output = Path(output_path)
     if output.parent != Path("."):
@@ -166,13 +200,14 @@ def visualize_graph(
         """
     )
     network.write_html(str(output), notebook=notebook, open_browser=False)
-    _prepend_graph_header(
-        output,
-        graph_title=graph_title,
-        graph_description=graph_description,
-        num_nodes=G.number_of_nodes(),
-        num_edges=G.number_of_edges(),
-    )
+    if include_header:
+        _prepend_graph_header(
+            output,
+            graph_title=graph_title,
+            graph_description=graph_description,
+            num_nodes=G.number_of_nodes(),
+            num_edges=G.number_of_edges(),
+        )
     return str(output)
 
 
@@ -181,6 +216,7 @@ def visualize_policy_runtime_risk_graphs(
     runtime_graph,
     risk_graph,
     output_dir: str = "outputs",
+    include_header: bool = True,
 ) -> dict[str, str]:
     output_root = Path(ensure_output_dir(output_dir))
     return {
@@ -189,18 +225,21 @@ def visualize_policy_runtime_risk_graphs(
             str(output_root / "policy_graph.html"),
             graph_title="Policy Graph：声明允许的数据流图",
             graph_description="该图展示数据处理者声明允许的数据流路径，可作为合规检测的基准图。",
+            include_header=include_header,
         ),
         "runtime": visualize_graph(
             runtime_graph,
             str(output_root / "runtime_graph.html"),
             graph_title="Runtime Graph：实际发生的数据流图",
             graph_description="该图展示日志中实际发生的数据流路径，用于与声明规则进行一致性比对。",
+            include_header=include_header,
         ),
         "risk": visualize_graph(
             risk_graph,
             str(output_root / "risk_graph.html"),
             graph_title="Risk Graph：非计划数据外传风险图",
             graph_description="该图展示基于声明—行为一致性比对、敏感字段识别和风险评分得到的高风险数据外传路径。",
+            include_header=include_header,
         ),
     }
 
@@ -208,7 +247,12 @@ def visualize_policy_runtime_risk_graphs(
 def _build_edge_label(attrs: dict[str, Any]) -> str:
     graph_type = attrs.get("graph_type")
     risk_level = attrs.get("risk_level")
+    delta_type = attrs.get("delta_type")
 
+    if graph_type == "delta" or delta_type:
+        if delta_type and attrs.get("max_risk_score") is not None:
+            return f"{delta_type} | {float(attrs['max_risk_score']):.2f}"
+        return str(delta_type or "delta")
     if graph_type == "policy" or risk_level == "declared":
         return "declared"
     if graph_type == "runtime":
