@@ -5,6 +5,7 @@ __pycache__/
 .streamlit/
 data_flow_graph.html
 *.log
+outputs/*.html
 dist/
 build/
 *.egg-info/
