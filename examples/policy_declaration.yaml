@@ -1,0 +1,33 @@
+systems:
+  - internal_user_system
+  - internal_order_system
+  - analytics_service
+  - external_crm
+  - external_partner
+  - unknown_external
+
+allowed_flows:
+  - source: internal_db.user_profile
+    target: analytics_service
+    fields: [name, age]
+    purpose: statistics
+    max_frequency_per_minute: 10
+    allow_external: false
+  - source: internal_db.order_info
+    target: analytics_service
+    fields: [order_id, amount]
+    purpose: business_analysis
+    max_frequency_per_minute: 20
+    allow_external: false
+  - source: internal_db.user_profile
+    target: external_crm
+    fields: [email]
+    purpose: customer_service
+    max_frequency_per_minute: 5
+    allow_external: true
+  - source: internal_db.order_info
+    target: external_crm
+    fields: [order_id]
+    purpose: customer_service
+    max_frequency_per_minute: 5
+    allow_external: true

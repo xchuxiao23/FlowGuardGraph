@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+.streamlit/
+data_flow_graph.html
+*.log
+dist/
+build/
+*.egg-info/
