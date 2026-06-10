@@ -13,6 +13,22 @@ FlowGuardGraph 是一个面向数据安全治理场景的轻量级原型系统�
 7. source-target 风险热力图：交互式展示 source 到 target 的平均风险分数和风险明细。
 8. 多规模模拟数据集生成与演示：支持 demo_small、demo_medium、demo_large。
 
+## 🖼️ 项目截图
+
+![Home](screenshots/home.png)
+
+![Overview](screenshots/overview.png)
+
+![Risk Graph](screenshots/risk_graph.png)
+
+![Delta Graph](screenshots/delta_graph.png)
+
+![Risk Events](screenshots/risk_events.png)
+
+![Risk Heatmap](screenshots/statistics_heatmap.png)
+
+![Report Export](screenshots/report_export.png)
+
 ## 🔄 系统流程
 
 ```text
@@ -180,19 +196,3 @@ FlowGuardGraph/
 - 示例数据均为模拟数据，不包含真实个人信息。
 - 本项目不直接替代正式合规审计。
 - 本项目适用于数据流合规检测、非计划数据外传识别和风险可视化研究。
-
-## 🖼️ 项目截图
-
-![Home](screenshots/home.png)
-
-![Overview](screenshots/overview.png)
-
-![Risk Graph](screenshots/risk_graph.png)
-
-![Delta Graph](screenshots/delta_graph.png)
-
-![Risk Events](screenshots/risk_events.png)
-
-![Risk Heatmap](screenshots/statistics_heatmap.png)
-
-![Report Export](screenshots/report_export.png)
